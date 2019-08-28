@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PocetKsPaleta
 {
-    class Adress
+    public class Adress
     {
         [Key]
         public int Id { get; set; }

@@ -88,9 +88,19 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.ButtonAgoraNakl = new System.Windows.Forms.Button();
             this.ButtonAgoraVykl = new System.Windows.Forms.Button();
+            this.buttonSearchNakl = new System.Windows.Forms.Button();
+            this.buttonSearchVykl = new System.Windows.Forms.Button();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.dateTimePickerNakl = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerVykl = new System.Windows.Forms.DateTimePicker();
+            this.label29 = new System.Windows.Forms.Label();
+            this.labelDatime = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxCount
@@ -740,11 +750,13 @@
             this.tableLayoutPanel3.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.ButtonAgoraVykl, 5, 0);
             this.tableLayoutPanel3.Controls.Add(this.button2, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.buttonSearchNakl, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.buttonSearchVykl, 4, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(346, 383);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(341, 28);
             this.tableLayoutPanel3.TabIndex = 7;
             // 
@@ -768,11 +780,108 @@
             this.ButtonAgoraVykl.UseVisualStyleBackColor = true;
             this.ButtonAgoraVykl.Click += new System.EventHandler(this.ButtonAgoraVykl_Click);
             // 
+            // buttonSearchNakl
+            // 
+            this.buttonSearchNakl.Location = new System.Drawing.Point(59, 3);
+            this.buttonSearchNakl.Name = "buttonSearchNakl";
+            this.buttonSearchNakl.Size = new System.Drawing.Size(50, 22);
+            this.buttonSearchNakl.TabIndex = 34;
+            this.buttonSearchNakl.Text = "S";
+            this.buttonSearchNakl.UseVisualStyleBackColor = true;
+            this.buttonSearchNakl.Click += new System.EventHandler(this.buttonSearchNakl_Click);
+            // 
+            // buttonSearchVykl
+            // 
+            this.buttonSearchVykl.Location = new System.Drawing.Point(227, 3);
+            this.buttonSearchVykl.Name = "buttonSearchVykl";
+            this.buttonSearchVykl.Size = new System.Drawing.Size(50, 22);
+            this.buttonSearchVykl.TabIndex = 35;
+            this.buttonSearchVykl.Text = "S";
+            this.buttonSearchVykl.UseVisualStyleBackColor = true;
+            this.buttonSearchVykl.Click += new System.EventHandler(this.buttonSearchVykl_Click);
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.label29, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.dateTimePickerNakl, 0, 3);
+            this.tableLayoutPanel4.Controls.Add(this.dateTimePickerVykl, 1, 3);
+            this.tableLayoutPanel4.Controls.Add(this.label27, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.label28, 1, 2);
+            this.tableLayoutPanel4.Controls.Add(this.labelDatime, 0, 1);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(346, 417);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 4;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(253, 96);
+            this.tableLayoutPanel4.TabIndex = 8;
+            // 
+            // label28
+            // 
+            this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(129, 59);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(83, 13);
+            this.label28.TabIndex = 1;
+            this.label28.Text = "Datum vykládky";
+            // 
+            // label27
+            // 
+            this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(3, 59);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(84, 13);
+            this.label27.TabIndex = 0;
+            this.label27.Text = "Datum nakládky";
+            // 
+            // dateTimePickerNakl
+            // 
+            this.dateTimePickerNakl.Location = new System.Drawing.Point(3, 75);
+            this.dateTimePickerNakl.Name = "dateTimePickerNakl";
+            this.dateTimePickerNakl.Size = new System.Drawing.Size(120, 20);
+            this.dateTimePickerNakl.TabIndex = 2;
+            this.dateTimePickerNakl.ValueChanged += new System.EventHandler(this.dateTimePickerNakl_ValueChanged);
+            // 
+            // dateTimePickerVykl
+            // 
+            this.dateTimePickerVykl.Location = new System.Drawing.Point(129, 75);
+            this.dateTimePickerVykl.Name = "dateTimePickerVykl";
+            this.dateTimePickerVykl.Size = new System.Drawing.Size(121, 20);
+            this.dateTimePickerVykl.TabIndex = 3;
+            this.dateTimePickerVykl.ValueChanged += new System.EventHandler(this.dateTimePickerVykl_ValueChanged);
+            // 
+            // label29
+            // 
+            this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(3, 11);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(46, 13);
+            this.label29.TabIndex = 4;
+            this.label29.Text = "Dnes je ";
+            // 
+            // labelDatime
+            // 
+            this.labelDatime.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelDatime.AutoSize = true;
+            this.labelDatime.Location = new System.Drawing.Point(3, 29);
+            this.labelDatime.Name = "labelDatime";
+            this.labelDatime.Size = new System.Drawing.Size(0, 13);
+            this.labelDatime.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 525);
+            this.ClientSize = new System.Drawing.Size(719, 525);
+            this.Controls.Add(this.tableLayoutPanel4);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tableLayoutPanel2);
@@ -781,11 +890,14 @@
             this.Controls.Add(this.buttonRun);
             this.Name = "Form1";
             this.Text = "How many palettes";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -851,6 +963,15 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button ButtonAgoraNakl;
         private System.Windows.Forms.Button ButtonAgoraVykl;
+        private System.Windows.Forms.Button buttonSearchNakl;
+        private System.Windows.Forms.Button buttonSearchVykl;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.DateTimePicker dateTimePickerNakl;
+        private System.Windows.Forms.DateTimePicker dateTimePickerVykl;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label labelDatime;
     }
 }
 

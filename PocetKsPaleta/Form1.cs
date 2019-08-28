@@ -13,6 +13,10 @@ namespace PocetKsPaleta
 {
     public partial class Form1 : Form
     {
+        public string DateTimeN { get; private set; }
+        public string DateTimeV { get; private set; }
+        public Byte Choice { get { return choice; } } 
+        private Byte choice;
         Adress adress = new Adress();
         string text = "";
         string adresTextReceiver = "";
@@ -23,6 +27,10 @@ namespace PocetKsPaleta
         public Form1()
         {
             InitializeComponent();
+            dateTimePickerVykl.Value = DateTime.Now.AddDays(2);
+            dateTimePickerNakl.Value = DateTime.Now.AddDays(1);
+            labelDatime.Text = DateTime.Now.ToLongDateString();
+
         }
 
         private void buttonRun_Click(object sender, EventArgs e)
@@ -72,25 +80,31 @@ namespace PocetKsPaleta
                 }
             }
             text += "Celková váha: " + product.Weight * product.Count * product.MasterCartonPieces + "kg\n";
-            text += "Celková hodnota pro pojištění: " + product.Prize * product.Count * product.MasterCartonPieces + "Kč";
+            text += "Celková hodnota pro pojištění: " + product.Prize * product.Count * product.MasterCartonPieces + "Kč\n";
+
         }
 
         private void buttonEmail_Click(object sender, EventArgs e)
         {
             AddAdressReceiver();
             CheckVyklAdress();
+            AddAdressSender();
+            CheckNaklAdress();
 
             Outlook._Application app = new Outlook.Application();
             Outlook.MailItem mail = (Outlook.MailItem)app.CreateItem(Outlook.OlItemType.olMailItem);
             mail.To = "lukashlavacek.lh@gmail.com";
             mail.Subject = "Agora poptávka";
-            mail.Body = "Dobrý den,\n\nprosím o cenu na přepravu:\n\n" 
+            mail.Body = "Dobrý den,\n\nprosím o cenu na přepravu:\n\n"
                 + label11.Text + "\n" + adresText + "\n\n"
                 + label12.Text + "\n" + adresTextReceiver + "\n\n"
-                + text + "\n\nDěkuji";
+                + text + "\n"
+                + "Datum nakládky: " + DateTimeN + "\n"
+                + "Datum vykládky: " + DateTimeV + "\n" + "\nDěkuji";
             mail.Display(true);
         }
 
+        // Misto nakladky
         public void AddAdressSender()
         {
 
@@ -110,10 +124,9 @@ namespace PocetKsPaleta
                 adress.State + "\n" +
                 adress.ContaktPerson + "\n" +
                 adress.TelNumber;
-            cntx.Adresses.Add(adress);
-            cntx.SaveChanges();
-        }
 
+        }
+        //misto vykladky
         public void AddAdressReceiver()
         {
 
@@ -135,7 +148,7 @@ namespace PocetKsPaleta
                 adress.TelNumber;
 
         }
-
+        //Vycisteni textboxu adresy nakladkove
         private void button1_Click(object sender, EventArgs e)
         {
             textBoxCompNakl.Clear();
@@ -146,7 +159,7 @@ namespace PocetKsPaleta
             textBoxPersonNakl.Clear();
             textBoxPhoneNakl.Clear();
         }
-
+        //Vycisteni textboxu adresy vykladkove
         private void button2_Click(object sender, EventArgs e)
         {
             textBoxCompVykl.Clear();
@@ -157,7 +170,7 @@ namespace PocetKsPaleta
             textBoxPersonVykl.Clear();
             textBoxPhoneVykl.Clear();
         }
-
+        //Predpripravena Agora adresa, nakladka
         private void ButtonAgoraNakl_Click(object sender, EventArgs e)
         {
             textBoxCompNakl.Text = "Agora DMT, a.s.";
@@ -168,7 +181,7 @@ namespace PocetKsPaleta
             textBoxPersonNakl.Text = "Lukáš Hlaváček";
             textBoxPhoneNakl.Text = "+420 515 913 876";
         }
-
+        //Predpripravena Agora adresa, vykladka
         private void ButtonAgoraVykl_Click(object sender, EventArgs e)
         {
             textBoxCompVykl.Text = "Agora DMT, a.s.";
@@ -179,43 +192,88 @@ namespace PocetKsPaleta
             textBoxPersonVykl.Text = "Lukáš Hlaváček";
             textBoxPhoneVykl.Text = "+420 515 913 876";
         }
-
+        //kontrola, zda-li je adresa jiz v databazi, pripadne pridani do DB
         private void CheckNaklAdress()
         {
-            var dotaz = cntx.Adresses.Where(c => c.CompanyName == textBoxCompNakl.Text)
-                                      .Where(c => c.Street == textBoxStreetNakl.Text)
-                                      .Where(c => c.City == textBoxCityNakl.Text)
-                                      .Select(c => c.CompanyName);
+            var isAdress = cntx.Adresses.Where(a => a.CompanyName == textBoxCompNakl.Text).Select(a => a.CompanyName);
 
-            if (dotaz == null)
+            if (isAdress.Any())
             {
+                MessageBox.Show("V seznamu se již tato adresa nachází");
+            }
+            else
+            {
+                MessageBox.Show("Do seznamu pridan");
                 cntx.Adresses.Add(adress);
                 cntx.SaveChanges();
             }
-            else
-            {
-                MessageBox.Show("V seznamu se již tato adresa nachází");
-            }
         }
-
+        //kontrola, zda-li je adresa jiz v databazi, pripadne pridani do DB
         private void CheckVyklAdress()
         {
-            List<Adress> LA = new List<Adress>();
-            LA = cntx.Adresses.ToList();
-            var myVariable = (from l in LA
-                              where l.CompanyName == textBoxCompNakl.Text
-                              select l.CompanyName);
 
-            label12.Text = myVariable.ToString();
+            var isAdress = cntx.Adresses.Where(a => a.CompanyName == textBoxCompVykl.Text).Select(a=> a.CompanyName);
 
-            if (myVariable.Any())
-            {
-                MessageBox.Show("Do seznamu pridan");
-            }
-            else
+            if (isAdress.Any())
             {
                 MessageBox.Show("V seznamu se již tato adresa nachází");
             }
+            else
+            {
+                MessageBox.Show("Do seznamu pridan");
+                cntx.Adresses.Add(adress);
+                cntx.SaveChanges();
+            }
+        }
+
+        public void AddNaklToTextboxes(Adress adress)
+        {
+             textBoxCompNakl.Text = adress.CompanyName;
+             textBoxStreetNakl.Text = adress.Street;
+             textBoxCityNakl.Text = adress.City;
+             textBoxZipNakl.Text = adress.ZipCode;
+             textBoxStateNakl.Text = adress.State;
+             textBoxPersonNakl.Text = adress.ContaktPerson;
+             textBoxPhoneNakl.Text = adress.TelNumber;
+        }
+
+        public void AddVyklToTextboxes(Adress adress)
+        {
+            textBoxCompVykl.Text = adress.CompanyName;
+            textBoxStreetVykl.Text = adress.Street;
+            textBoxCityVykl.Text = adress.City;
+            textBoxZipVykl.Text = adress.ZipCode;
+            textBoxStateVykl.Text = adress.State;
+            textBoxPersonVykl.Text = adress.ContaktPerson;
+            textBoxPhoneVykl.Text = adress.TelNumber;
+        }
+
+        private void buttonSearchNakl_Click(object sender, EventArgs e)
+        {
+            choice = 0;
+            Form2 form2 = new Form2(this);           
+            form2.ShowDialog();
+            
+            
+        }
+
+        private void buttonSearchVykl_Click(object sender, EventArgs e)
+        {
+            choice = 1;
+            Form2 form2 = new Form2(this);
+            form2.ShowDialog();
+        }
+
+        private void dateTimePickerVykl_ValueChanged(object sender, EventArgs e)
+        {           
+            DateTimeV = dateTimePickerVykl.Value.Date.ToShortDateString();
+        }
+
+        private void dateTimePickerNakl_ValueChanged(object sender, EventArgs e)
+        {           
+            DateTimeN = dateTimePickerNakl.Value.Date.ToShortDateString();
         }
     }
+        
+    
 }
