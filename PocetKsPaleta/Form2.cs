@@ -28,7 +28,7 @@ namespace PocetKsPaleta
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            if (f1.Choice == 0)
+            if (f1.adresses == Form1.Adresses.LoadingAdress)
             {
                 f1.AddNaklToTextboxes(GetObjectOfCurrentRow());
             }

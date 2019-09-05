@@ -91,11 +91,11 @@
             this.buttonSearchNakl = new System.Windows.Forms.Button();
             this.buttonSearchVykl = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.dateTimePickerNakl = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerVykl = new System.Windows.Forms.DateTimePicker();
-            this.label29 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
             this.labelDatime = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -821,25 +821,15 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(253, 96);
             this.tableLayoutPanel4.TabIndex = 8;
             // 
-            // label28
+            // label29
             // 
-            this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(129, 59);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(83, 13);
-            this.label28.TabIndex = 1;
-            this.label28.Text = "Datum vykládky";
-            // 
-            // label27
-            // 
-            this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(3, 59);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(84, 13);
-            this.label27.TabIndex = 0;
-            this.label27.Text = "Datum nakládky";
+            this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(3, 11);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(46, 13);
+            this.label29.TabIndex = 4;
+            this.label29.Text = "Dnes je ";
             // 
             // dateTimePickerNakl
             // 
@@ -857,15 +847,25 @@
             this.dateTimePickerVykl.TabIndex = 3;
             this.dateTimePickerVykl.ValueChanged += new System.EventHandler(this.dateTimePickerVykl_ValueChanged);
             // 
-            // label29
+            // label27
             // 
-            this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(3, 11);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(46, 13);
-            this.label29.TabIndex = 4;
-            this.label29.Text = "Dnes je ";
+            this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(3, 59);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(84, 13);
+            this.label27.TabIndex = 0;
+            this.label27.Text = "Datum nakládky";
+            // 
+            // label28
+            // 
+            this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(129, 59);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(83, 13);
+            this.label28.TabIndex = 1;
+            this.label28.Text = "Datum vykládky";
             // 
             // labelDatime
             // 
